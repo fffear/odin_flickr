@@ -3,8 +3,6 @@ class StaticPagesController < ApplicationController
     @flickr = FlickRaw::Flickr.new
     if params[:search]
       unless params[:search][:user_id].blank?
-      #  @photos = nil
-      #else
         @photos = flickr.photos.search(user_id: params[:search][:user_id])
       end
     end
