@@ -1,0 +1,20 @@
+<h1>Get Photos from Flickr</h1>
+
+<%= form_for(:search, url: home_path, method: 'get') do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id, value: params[:search] ? params[:search][:user_id] : "" %>
+
+  <br>
+
+  <%= f.submit "Get Photos" %>
+<% end %>
+
+<% if params[:search] %>
+  <% @photos.each do |photo| %>
+    <div>
+      <%= image_tag("https://farm#{photo.farm}.staticflickr.com/#{photo.server}/#{photo.id}_#{photo.secret}.jpg",
+                    size: "500",
+                    alt: "Image") %>
+    </div>
+  <% end %>
+<% end %>
